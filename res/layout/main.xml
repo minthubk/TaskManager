@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="35px"
+        android:orientation="horizontal" >
+      <TextView
+            android:id="@+id/currentTaskHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/currentTaskHeaderLabel"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="50px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.17"
+            android:scaleType="centerInside"
+            android:src="@drawable/x_button"
+            android:hapticFeedbackEnabled="true"
+            android:soundEffectsEnabled="true" />
+
+    </LinearLayout>
+
+<com.jeffgabriel.TaskManager.CurrentTasksWidget
+    android:id="@+id/currentTasks"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    />
+<View 
+    android:layout_width="fill_parent"
+    android:layout_height="2dp"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="3dp"
+    />
+<com.jeffgabriel.TaskManager.NewTaskWidget
+    	android:id="@+id/newTaskForm"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    />
+    
+</LinearLayout>
