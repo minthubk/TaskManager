@@ -27,4 +27,8 @@ public class TaskProvider implements ITaskProvider {
 		return _dbHelper.getTasks(null, null);
 	}
 
+	public void update(Task task) {
+		_dbHelper.update(task);
+	}
+
 }

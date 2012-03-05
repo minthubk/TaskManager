@@ -7,6 +7,7 @@ CREATE TABLE
 	,"CategoryId" INTEGER
 	,"CreateDate" INTEGER
 	,"IsComplete" INTEGER
+	,"CompleteDate" INTEGER
 )
 
 CREATE TABLE
@@ -34,7 +35,7 @@ INSERT INTO Categories VALUES(NULL, NULL);
 SELECT rowid, *  FROM Categories ORDER BY rowid; 
 UPDATE Categories SET Name='Personal' WHERE rowid=3;
 
-INSERT INTO Tasks VALUES(NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO Tasks VALUES(NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 SELECT rowid, *  FROM Tasks ORDER BY rowid; 
 UPDATE Tasks SET Name='Test Task' WHERE rowid=1;
 UPDATE Tasks SET DueDate='1324747116' WHERE rowid=1;
