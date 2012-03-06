@@ -15,6 +15,7 @@ public final class R {
         public static final int x_button=0x7f020001;
     }
     public static final class id {
+        public static final int btnDeleteTask=0x7f05000e;
         public static final int closeButton=0x7f050002;
         public static final int currentTaskHeader=0x7f050001;
         public static final int currentTasks=0x7f050003;
@@ -41,5 +42,8 @@ public final class R {
         public static final int addTaskLabel=0x7f040002;
         public static final int app_name=0x7f040000;
         public static final int currentTaskHeaderLabel=0x7f040001;
+        public static final int deleteButtonText=0x7f040005;
+        public static final int deleteWarning=0x7f040006;
+        public static final int noDueDateError=0x7f040004;
     }
 }

@@ -3,13 +3,18 @@ package com.jeffgabriel.TaskManager;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import android.content.Context;
+import android.content.res.Resources;
+
 import com.jeffgabriel.TaskManager.Interfaces.ITaskProvider;
 
 public class TaskProvider implements ITaskProvider {
 
 	com.jeffgabriel.TaskManager.Interfaces.IDbHelper _dbHelper;
+	private final Context _context;
 	
-	public TaskProvider(com.jeffgabriel.TaskManager.Interfaces.IDbHelper helper) {
+	public TaskProvider(com.jeffgabriel.TaskManager.Interfaces.IDbHelper helper, Context context) {
+		_context = context;
 		_dbHelper = helper;
 		try {
 			_dbHelper.createDataBase();
@@ -28,6 +33,8 @@ public class TaskProvider implements ITaskProvider {
 	}
 
 	public void update(Task task) {
+		if(task.get_dueDate() == null)
+			throw new IllegalStateException(_context.getResources().getString(R.string.noDueDateError));
 		_dbHelper.update(task);
 	}
 

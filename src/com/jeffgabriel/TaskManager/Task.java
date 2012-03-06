@@ -26,8 +26,8 @@ public class Task {
 		return _id;
 	}
 
-	public void set_id(int _id) {
-		this._id = _id;
+	public void set_id(int id) {
+		this._id = id;
 	}
 
 	private String _name;
@@ -36,27 +36,37 @@ public class Task {
 		return _name;
 	}
 
-	public void set_name(String _name) {
-		this._name = _name;
+	public void set_name(String name) {
+		this._name = name;
 	}
 
 	public Date get_dueDate() {
 		return _dueDate;
 	}
 
-	public void set_dueDate(Date _dueDate) {
-		this._dueDate = _dueDate;
+	public void set_dueDate(Date dueDate) {
+		this._dueDate = dueDate;
 	}
 
 	public boolean get_isComplete() {
 		return _isComplete;
 	}
 
-	public void set_isComplete(boolean _isComplete) {
-		this._isComplete = _isComplete;
+	public void set_isComplete(boolean isComplete) {
+		this._isComplete = isComplete;
 	}
 
 	private boolean _isComplete = false;
+	
+	private Date _completeDate;
+	public Date get_completeDate() {
+		return _completeDate;
+	}
+
+	public void set_completeDate(Date completeDate) {
+		this._completeDate = completeDate;
+	}
+
 //END PROPERTIES	
 
 	public ContentValues getValuesMap(){
@@ -68,6 +78,8 @@ public class Task {
 		values.put("CategoryId",1);
 		values.put("CreateDate", Calendar.getInstance().getTimeInMillis());
 		values.put("IsComplete", this._isComplete ? 1 : 0 );
+		if(this._completeDate != null)
+			values.put("CompleteDate", this._completeDate.getTime());
 		return values;
 	}
 	

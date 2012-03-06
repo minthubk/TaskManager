@@ -19,7 +19,7 @@ public class CurrentTasksWidget extends LinearLayout {
 	private static ITaskProvider _taskProvider = null;
 	private static synchronized ITaskProvider getProvider(Context context){
 		if(_taskProvider == null)
-			_taskProvider = new TaskProvider(new DatabaseHelper(context));
+			_taskProvider = new TaskProvider(new DatabaseHelper(context),context);
 		return _taskProvider;
 	}
 	
@@ -53,7 +53,7 @@ public class CurrentTasksWidget extends LinearLayout {
 			taskTable.removeAllViews();
 			ArrayList<Task> tasks = getProvider(getContext()).getAll();
 			for(Task task : tasks){
-				TaskRowWidget row = new TaskRowWidget(this.getContext());
+				TaskRowWidget row = new TaskRowWidget(this);
 				row.setTaskData(task);
 				taskTable.addView(row);
 				taskTable.addView(createRowDivider());
