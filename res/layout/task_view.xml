@@ -14,7 +14,8 @@
         android:id="@+id/taskIsComplete"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.22" />
+        android:layout_weight="0.22"
+           />
     <TextView
         android:id="@+id/taskDueDate"
         android:layout_width="80dp"

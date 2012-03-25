@@ -2,10 +2,13 @@ package com.jeffgabriel.TaskManager;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import com.jeffgabriel.TaskManager.Interfaces.IDbHelper;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.content.Context;
 import android.graphics.YuvImage;
 import android.util.AttributeSet;
@@ -34,6 +37,7 @@ public class NewTaskWidget extends LinearLayout {
 			((Activity)getContext()).getLayoutInflater().inflate(R.layout.new_task,this);
 			newTaskName = (EditText)findViewById(R.id.newtaskName);
 			newTaskDate = (DatePicker)findViewById(R.id.newTaskDate);
+			clearForm();
 			Button button = (Button)findViewById(R.id.saveTaskButton);
 			if(button != null){
 				button.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +52,8 @@ public class NewTaskWidget extends LinearLayout {
 						Task task = new Task(-1,taskName,taskDate,false);
 						helper.add(task);
 						clearForm();
+						AlarmService alrm = new AlarmService(getContext());
+						alrm.startAlarm(task);
 						if(_currentTaskList != null)
 							_currentTaskList.refreshTaskList();
 					}
@@ -63,7 +69,8 @@ public class NewTaskWidget extends LinearLayout {
 	
 	private void clearForm(){
 		newTaskName.setText("");
-		Calendar cal = Calendar.getInstance();
+		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/New_York"),Locale.US);
+		cal.add(Calendar.DAY_OF_MONTH, 1);
 		newTaskDate.updateDate(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
 	}
 }

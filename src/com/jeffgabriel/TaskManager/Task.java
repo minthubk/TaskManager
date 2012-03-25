@@ -1,13 +1,18 @@
 package com.jeffgabriel.TaskManager;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Calendar;
 
 import android.content.ContentValues;
 
-public class Task {
+public class Task implements Serializable{
 	
-//CTORS
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7527562295622776147L;
+	//CTORS
 	public Task(){
 		this(-1,"",Calendar.getInstance().getTime(),false);
 	}

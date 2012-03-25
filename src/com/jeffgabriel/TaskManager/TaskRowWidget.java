@@ -9,6 +9,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -25,8 +27,7 @@ public class TaskRowWidget extends LinearLayout {
 
 	private static synchronized ITaskProvider getProvider(Context context) {
 		if (_taskProvider == null)
-			_taskProvider = new TaskProvider(new DatabaseHelper(context),
-					context);
+			_taskProvider = new TaskProvider(new DatabaseHelper(context), context);
 		return _taskProvider;
 	}
 
@@ -67,8 +68,12 @@ public class TaskRowWidget extends LinearLayout {
 		taskCheck.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
-				_task.set_isComplete(isChecked);
+				_task.set_isComplete(isChecked);				
 				getProvider(getContext()).update(_task);
+				if(_task.get_isComplete())
+					taskCheck.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+				else
+					taskCheck.setPaintFlags(Paint.LINEAR_TEXT_FLAG);
 			}
 		});
 		dateView = (TextView) findViewById(R.id.taskDueDate);

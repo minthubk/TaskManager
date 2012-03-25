@@ -12,7 +12,8 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
-        public static final int x_button=0x7f020001;
+        public static final int icon=0x7f020001;
+        public static final int x_button=0x7f020002;
     }
     public static final class id {
         public static final int btnDeleteTask=0x7f05000e;
@@ -40,6 +41,7 @@ public final class R {
     public static final class string {
         public static final int addTaskBtn=0x7f040003;
         public static final int addTaskLabel=0x7f040002;
+        public static final int alarmServiceLabel=0x7f040007;
         public static final int app_name=0x7f040000;
         public static final int currentTaskHeaderLabel=0x7f040001;
         public static final int deleteButtonText=0x7f040005;

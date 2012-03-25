@@ -7,4 +7,5 @@
 	<string name="noDueDateError">You must provide a due date for every task</string>
 	<string name="deleteButtonText">delete</string>
 	<string name="deleteWarning">Are you sure you want to delete this task? This is a permanent delete.</string>
+	<string name="alarmServiceLabel">Task Due Notice</string>
 </resources>
