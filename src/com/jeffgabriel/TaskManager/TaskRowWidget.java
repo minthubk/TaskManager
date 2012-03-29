@@ -9,9 +9,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,16 +26,19 @@ public class TaskRowWidget extends LinearLayout {
 
 	CurrentTasksWidget _parentList;
 	private static ITaskProvider _taskProvider = null;
+	private static final String PREFS_NAME = "NoDeleteWarning";
 
 	private static synchronized ITaskProvider getProvider(Context context) {
 		if (_taskProvider == null)
-			_taskProvider = new TaskProvider(new DatabaseHelper(context), context);
+			_taskProvider = new TaskProvider(new DatabaseHelper(context),
+					context);
 		return _taskProvider;
 	}
 
 	CheckBox taskCheck;
 	TextView dateView;
 	Task _task;
+	private CheckBox dontShowAgain;
 
 	public TaskRowWidget(CurrentTasksWidget taskWidget) {
 		super(taskWidget.getContext());
@@ -48,11 +53,14 @@ public class TaskRowWidget extends LinearLayout {
 
 	DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 		public void onClick(DialogInterface dialog, int which) {
+			SharedPreferences prefs = getContext().getSharedPreferences(
+					PREFS_NAME, 0);
+			prefs.edit().putBoolean(PREFS_NAME, dontShowAgain.isChecked() == false)
+					.commit();
+
 			switch (which) {
 			case DialogInterface.BUTTON_POSITIVE:
-				getProvider(getContext()).delete(_task);
-				//TODO:throw deleted event to force refresh;
-				_parentList.refreshTaskList();
+				deleteTask();
 				break;
 			case DialogInterface.BUTTON_NEGATIVE:
 				break;
@@ -61,6 +69,12 @@ public class TaskRowWidget extends LinearLayout {
 		}
 	};
 	
+	private void deleteTask(){
+		getProvider(getContext()).delete(_task);
+		// TODO:throw deleted event to force refresh;
+		_parentList.refreshTaskList();
+	}
+
 	protected void initializeComponent() {
 		((Activity) getContext()).getLayoutInflater().inflate(
 				R.layout.task_view, this);
@@ -68,9 +82,9 @@ public class TaskRowWidget extends LinearLayout {
 		taskCheck.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
-				_task.set_isComplete(isChecked);				
+				_task.set_isComplete(isChecked);
 				getProvider(getContext()).update(_task);
-				if(_task.get_isComplete())
+				if (_task.get_isComplete())
 					taskCheck.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 				else
 					taskCheck.setPaintFlags(Paint.LINEAR_TEXT_FLAG);
@@ -81,12 +95,26 @@ public class TaskRowWidget extends LinearLayout {
 		if (button != null)
 			button.setOnClickListener(new OnClickListener() {
 				public void onClick(View v) {
-					AlertDialog.Builder builder = new AlertDialog.Builder(
-							getContext());
-					builder.setMessage(R.string.deleteWarning)
-							.setPositiveButton("Yes", dialogClickListener)
-							.setNegativeButton("No", dialogClickListener)
-							.show();
+					SharedPreferences settings = getContext()
+							.getSharedPreferences(PREFS_NAME, 0);
+					boolean showMessage = settings.getBoolean(PREFS_NAME, true);
+					if (showMessage) {
+						AlertDialog.Builder builder = new AlertDialog.Builder(
+								getContext());
+						builder.setMessage(R.string.deleteWarning)
+								.setPositiveButton("Yes", dialogClickListener)
+								.setNegativeButton("No", dialogClickListener);
+						LayoutInflater adbInflater = LayoutInflater
+								.from(getContext());
+						View deleteLayout = adbInflater.inflate(
+								R.layout.checkbox, null);
+						dontShowAgain = (CheckBox) deleteLayout
+								.findViewById(R.id.skip);
+						builder.setView(deleteLayout);
+						builder.show();
+					}
+					else
+						deleteTask();
 				}
 			});
 	}

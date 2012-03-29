@@ -37,5 +37,14 @@ public class TaskProvider implements ITaskProvider {
 			throw new IllegalStateException(_context.getResources().getString(R.string.noDueDateError));
 		_dbHelper.update(task);
 	}
+	
+	String whereClause = "_id = ?";
+	
+	public Task get(int taskId) {
+		ArrayList<Task> tasks = _dbHelper.getTasks(whereClause,new String[]{Integer.toString(taskId)});
+		if(tasks.isEmpty() == false)
+			return tasks.get(0);
+		return null;
+	}
 
 }

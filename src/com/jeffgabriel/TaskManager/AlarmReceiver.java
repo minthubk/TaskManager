@@ -13,7 +13,11 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         NotificationManager mNM;
         mNM = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Task taskDue = (Task) intent.getExtras().get("Task");
+        
+        //Task still due - not complete?
+        Task taskDue = new TaskProvider(new DatabaseHelper(context),context).get(getTaskId(intent));
+        if(taskDue == null || taskDue.get_isComplete())
+        	return;
         // Set the icon, scrolling text and timestamp
         Notification notification = new Notification(R.drawable.icon, "Task Alarm", System.currentTimeMillis());
         // The PendingIntent to launch our activity if the user selects this notification
@@ -25,4 +29,9 @@ public class AlarmReceiver extends BroadcastReceiver {
         mNM.notify(R.string.alarmServiceLabel, notification);
     }
 
+	private int getTaskId(Intent intent){
+		String idString = intent.getData().getLastPathSegment();
+		return Integer.parseInt(idString);
+	}
 }
+	

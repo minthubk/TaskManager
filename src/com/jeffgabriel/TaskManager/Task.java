@@ -59,6 +59,8 @@ public class Task implements Serializable{
 
 	public void set_isComplete(boolean isComplete) {
 		this._isComplete = isComplete;
+		if(isComplete == true)
+			this.set_completeDate(Calendar.getInstance().getTime());
 	}
 
 	private boolean _isComplete = false;
