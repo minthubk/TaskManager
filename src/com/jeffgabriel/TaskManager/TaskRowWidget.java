@@ -1,17 +1,13 @@
 package com.jeffgabriel.TaskManager;
 
-import java.util.Date;
 import java.text.SimpleDateFormat;
-
-import com.jeffgabriel.TaskManager.Interfaces.ITaskProvider;
+import java.util.Date;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,11 +18,12 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jeffgabriel.TaskManager.Interfaces.ITaskProvider;
+
 public class TaskRowWidget extends LinearLayout {
 
 	CurrentTasksWidget _parentList;
 	private static ITaskProvider _taskProvider = null;
-	private static final String PREFS_NAME = "NoDeleteWarning";
 
 	private static synchronized ITaskProvider getProvider(Context context) {
 		if (_taskProvider == null)
@@ -53,10 +50,8 @@ public class TaskRowWidget extends LinearLayout {
 
 	DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 		public void onClick(DialogInterface dialog, int which) {
-			SharedPreferences prefs = getContext().getSharedPreferences(
-					PREFS_NAME, 0);
-			prefs.edit().putBoolean(PREFS_NAME, dontShowAgain.isChecked() == false)
-					.commit();
+			PreferenceService.setHideDeleteWarningPreference(getContext(),
+					dontShowAgain.isChecked());
 
 			switch (which) {
 			case DialogInterface.BUTTON_POSITIVE:
@@ -68,8 +63,8 @@ public class TaskRowWidget extends LinearLayout {
 
 		}
 	};
-	
-	private void deleteTask(){
+
+	private void deleteTask() {
 		getProvider(getContext()).delete(_task);
 		// TODO:throw deleted event to force refresh;
 		_parentList.refreshTaskList();
@@ -95,10 +90,11 @@ public class TaskRowWidget extends LinearLayout {
 		if (button != null)
 			button.setOnClickListener(new OnClickListener() {
 				public void onClick(View v) {
-					SharedPreferences settings = getContext()
-							.getSharedPreferences(PREFS_NAME, 0);
-					boolean showMessage = settings.getBoolean(PREFS_NAME, true);
-					if (showMessage) {
+					boolean hideMessage = PreferenceService
+							.getHideDeleteWarningPreference(getContext());
+					if (hideMessage)
+						deleteTask();
+					else {
 						AlertDialog.Builder builder = new AlertDialog.Builder(
 								getContext());
 						builder.setMessage(R.string.deleteWarning)
@@ -113,8 +109,6 @@ public class TaskRowWidget extends LinearLayout {
 						builder.setView(deleteLayout);
 						builder.show();
 					}
-					else
-						deleteTask();
 				}
 			});
 	}
