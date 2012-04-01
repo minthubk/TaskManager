@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <group android:id="@+id/globalSettings" android:menuCategory="container">
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/settings"
+            android:title="@string/settingsMenuItem"/>
+    </group>
+    <group android:id="@+id/actionGroup" android:menuCategory="secondary" >
+        <item
+            android:id="@+id/addNewTask"
+            android:icon="@drawable/addnew"
+            android:title="@string/actionMenuAddTask"/>
+    </group>
+
+</menu>

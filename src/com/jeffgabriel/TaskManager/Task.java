@@ -1,10 +1,12 @@
 package com.jeffgabriel.TaskManager;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.security.InvalidParameterException;
 import java.util.Calendar;
+import java.util.Date;
 
 import android.content.ContentValues;
+import android.net.Uri;
 
 public class Task implements Serializable{
 	
@@ -72,6 +74,32 @@ public class Task implements Serializable{
 
 	public void set_completeDate(Date completeDate) {
 		this._completeDate = completeDate;
+	}
+	
+	private static final String HOST = "com.jeffgabriel.taskmanager";
+	private static final String SCHEME = "content";
+	private static final String PATH = "task";
+	private static final String URI_FORMAT = "%s://%s/%s/%d";
+	
+	public Uri get_Uri()
+	{
+		Uri taskUri = Uri.parse(String.format(URI_FORMAT, SCHEME,HOST,PATH,this.get_id()));
+		return taskUri;
+	}
+	
+	static int getIdFromUri(Uri intentUri){
+		validateUri(intentUri);
+		String idString = intentUri.getLastPathSegment();
+		return Integer.parseInt(idString);
+	}
+	
+	static void validateUri(Uri uri){
+		if(uri != null 
+				&& uri.getScheme().equalsIgnoreCase(SCHEME)
+				&& uri.getHost().equalsIgnoreCase(HOST)
+				&& uri.getPathSegments().get(0).equalsIgnoreCase(PATH))
+			return;
+		throw new InvalidParameterException("The Uri provided is not a Task Uri.");
 	}
 
 //END PROPERTIES	

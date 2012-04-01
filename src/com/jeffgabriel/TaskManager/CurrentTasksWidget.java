@@ -14,7 +14,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 public class CurrentTasksWidget extends LinearLayout {
-	
+	//TODO: this should probably be a data-bound list.
 	TableLayout taskTable;
 	private static ITaskProvider _taskProvider = null;
 	private static synchronized ITaskProvider getProvider(Context context){
@@ -47,7 +47,7 @@ public class CurrentTasksWidget extends LinearLayout {
 		return v;
 	}
 	
-	public void refreshTaskList(){
+	void refreshTaskList(){
 		taskTable = (TableLayout)findViewById(R.id.taskTable);
 		if(taskTable != null){
 			taskTable.removeAllViews();

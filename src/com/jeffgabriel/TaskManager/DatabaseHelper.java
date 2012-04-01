@@ -47,9 +47,6 @@ public class DatabaseHelper extends SQLiteOpenHelper implements com.jeffgabriel.
  
     		//By calling this method and empty database will be created into the default system path
                //of your application so we are gonna be able to overwrite that database with our database.
-        	SQLiteDatabase empty = this.getReadableDatabase();
-        	String emptyPath = empty.getPath();
- 
         	try {
  
     			copyDataBase();

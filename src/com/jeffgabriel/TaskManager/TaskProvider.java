@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.content.res.Resources;
 
 import com.jeffgabriel.TaskManager.Interfaces.ITaskProvider;
 
