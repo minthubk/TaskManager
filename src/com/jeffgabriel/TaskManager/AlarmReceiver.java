@@ -21,9 +21,13 @@ public class AlarmReceiver extends BroadcastReceiver {
 		Notification notification = new Notification(R.drawable.icon,
 				"Task Alarm", System.currentTimeMillis());
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
-		notification.defaults |= Notification.DEFAULT_SOUND;
+		if (PreferenceService.getAlertShouldSoundPreference(context)) {
+			notification.sound = PreferenceService
+					.getAlertSoundPreference(context);
+		}
 		Intent activityOpener = new Intent(context, TaskManagerActivity.class);
-		activityOpener.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		activityOpener.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+				| Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
 				activityOpener, PendingIntent.FLAG_UPDATE_CURRENT);
 		notification.setLatestEventInfo(context,

@@ -22,9 +22,23 @@ public class CreateTaskActivity extends Activity implements
 		if (button != null) {
 			button.setOnClickListener(this);
 		}
+
+		Button saveContinueBtn = (Button) findViewById(R.id.saveContinueTaskButton);
+		if (saveContinueBtn != null) {
+			saveContinueBtn.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					performTaskAdd();
+				}
+			});
+		}
 	}
 
 	public void onClick(View v) {
+		performTaskAdd();
+		this.finish();
+	}
+
+	private void performTaskAdd() {
 		NewTaskWidget form = (NewTaskWidget) findViewById(R.id.newTaskForm);
 		IDbHelper helper = new DatabaseHelper(this);
 		Task task = new Task(-1, form.getTaskName(), form.getDateAndTime(),
@@ -38,6 +52,5 @@ public class CreateTaskActivity extends Activity implements
 		sendBroadcast(createdIntent);
 		AlarmService alarmSender = new AlarmService(this);
 		alarmSender.startAlarm(task);
-		this.finish();
 	}
 }

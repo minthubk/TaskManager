@@ -60,4 +60,11 @@ public class TaskManagerActivity extends Activity {
 		if(currentTasks != null)
 			currentTasks.refreshTaskList();
 	}
+	
+	@Override
+	protected void onResume(){
+		super.onResume();
+		if(currentTasks != null)
+			currentTasks.refreshTaskList();
+	}
 }

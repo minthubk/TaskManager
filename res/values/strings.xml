@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">TaskManager</string>
-	<string name="currentTaskHeaderLabel">Pending To Do Items</string>
-	<string name="addTaskLabel">New Task Name</string>
-	<string name="addTaskBtn">Add Task</string>
-	<string name="noDueDateError">You must provide a due date for every task</string>
-	<string name="deleteButtonText">delete</string>
-	<string name="deleteWarning">Are you sure you want to delete this task? This is a permanent delete.</string>
-	<string name="alarmServiceLabel">Task Due Notice</string>
-	<string name="deleteWarningNoShow">Please do not show again.</string>
-	<string name="deleteWarningNoShowOptionTitle">Hide Delete Warning</string>
-	<string name="deleteWarningNoShowOptionSummary">Allow permanent task delete without warning.</string>
-	<string name="settingsMenuItem">Settings</string>
-	<string name="userPreferenceCategory">User Preferences</string>
-	<string name="actionMenuAddTask">Add Task</string>
-	<string name="closeButtonDesc">Button to close entire application window</string>
-	<string name="invalidUriParameterMsg">The Uri provided is not a Task Uri.</string>
+    <string name="currentTaskHeaderLabel">Pending To Do Items</string>
+    <string name="addTaskLabel">New Task Name</string>
+    <string name="addTaskBtn">Save and Return</string>
+    <string name="noDueDateError">You must provide a due date for every task</string>
+    <string name="deleteButtonText">delete</string>
+    <string name="deleteWarning">Are you sure you want to delete this task? This is a permanent delete.</string>
+    <string name="alarmServiceLabel">Task Due Notice</string>
+    <string name="deleteWarningNoShow">Please do not show again.</string>
+    <string name="deleteWarningNoShowOptionTitle">Hide Delete Warning</string>
+    <string name="deleteWarningNoShowOptionSummary">Allow permanent task delete without warning.</string>
+    <string name="settingsMenuItem">Settings</string>
+    <string name="userPreferenceCategory">User Preferences</string>
+    <string name="taskDisplayPrefereceCategory">Task Display Preferences</string>
+    <string name="actionMenuAddTask">Add Task</string>
+    <string name="closeButtonDesc">Button to close entire application window</string>
+    <string name="invalidUriParameterMsg">The Uri provided is not a Task Uri.</string>
+    <string name="addContinueTaskBtn">Save and Add Another</string>
+    <string name="displayCompletedPrefSummary">Sets whether the current tasks list includes completed tasks.</string>
+    <string name="displayCompletedPrefTitle">Show Completed Tasks</string>
+    <string name="taskListSizePrefTitle">List Display Size</string>
+    <string name="taskListSizePrefSummary">How many items to show on the first page of tasks.</string>
+    <string name="alertSoundOnOffPrefSummary">Determines if a sound is played when a task is due</string>
+    <string name="alertSoundOnOffPrefTitle">Play Task Due Alert</string>
+    <string name="alertSoundPrefSummary">Select the sound to play when a task is due</string>
+    <string name="alertSoundPrefTitle">Select Alert Sound</string>
 </resources>

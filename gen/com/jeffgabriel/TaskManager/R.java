@@ -8,6 +8,9 @@
 package com.jeffgabriel.TaskManager;
 
 public final class R {
+    public static final class array {
+        public static final int listSizes=0x7f040000;
+    }
     public static final class attr {
     }
     public static final class drawable {
@@ -18,28 +21,29 @@ public final class R {
         public static final int x_button=0x7f020004;
     }
     public static final class id {
-        public static final int actionGroup=0x7f060014;
-        public static final int addNewTask=0x7f060015;
-        public static final int btnDeleteTask=0x7f060011;
-        public static final int closeButton=0x7f060005;
-        public static final int currentTaskHeader=0x7f060004;
-        public static final int currentTasks=0x7f060006;
-        public static final int globalSettings=0x7f060012;
-        public static final int layout_root=0x7f060000;
-        public static final int linearLayout=0x7f060003;
-        public static final int newTaskDate=0x7f060009;
-        public static final int newTaskForm=0x7f060002;
-        public static final int newTaskLabel=0x7f060007;
-        public static final int newtaskName=0x7f060008;
-        public static final int relativeLayout1=0x7f06000a;
-        public static final int saveTaskButton=0x7f06000c;
-        public static final int settings=0x7f060013;
-        public static final int skip=0x7f060001;
-        public static final int tableRow1=0x7f06000e;
-        public static final int taskDueDate=0x7f060010;
-        public static final int taskIsComplete=0x7f06000f;
-        public static final int taskTable=0x7f06000d;
-        public static final int timePicker=0x7f06000b;
+        public static final int actionGroup=0x7f070015;
+        public static final int addNewTask=0x7f070016;
+        public static final int btnDeleteTask=0x7f070012;
+        public static final int closeButton=0x7f070005;
+        public static final int currentTaskHeader=0x7f070004;
+        public static final int currentTasks=0x7f070006;
+        public static final int globalSettings=0x7f070013;
+        public static final int layout_root=0x7f070000;
+        public static final int linearLayout=0x7f070003;
+        public static final int newTaskDate=0x7f070009;
+        public static final int newTaskForm=0x7f070002;
+        public static final int newTaskLabel=0x7f070007;
+        public static final int newtaskName=0x7f070008;
+        public static final int relativeLayout1=0x7f07000a;
+        public static final int saveContinueTaskButton=0x7f07000d;
+        public static final int saveTaskButton=0x7f07000c;
+        public static final int settings=0x7f070014;
+        public static final int skip=0x7f070001;
+        public static final int tableRow1=0x7f07000f;
+        public static final int taskDueDate=0x7f070011;
+        public static final int taskIsComplete=0x7f070010;
+        public static final int taskTable=0x7f07000e;
+        public static final int timePicker=0x7f07000b;
     }
     public static final class layout {
         public static final int checkbox=0x7f030000;
@@ -51,24 +55,34 @@ public final class R {
         public static final int task_view=0x7f030006;
     }
     public static final class menu {
-        public static final int options=0x7f050000;
+        public static final int options=0x7f060000;
     }
     public static final class string {
-        public static final int actionMenuAddTask=0x7f04000d;
-        public static final int addTaskBtn=0x7f040003;
-        public static final int addTaskLabel=0x7f040002;
-        public static final int alarmServiceLabel=0x7f040007;
-        public static final int app_name=0x7f040000;
-        public static final int closeButtonDesc=0x7f04000e;
-        public static final int currentTaskHeaderLabel=0x7f040001;
-        public static final int deleteButtonText=0x7f040005;
-        public static final int deleteWarning=0x7f040006;
-        public static final int deleteWarningNoShow=0x7f040008;
-        public static final int deleteWarningNoShowOptionSummary=0x7f04000a;
-        public static final int deleteWarningNoShowOptionTitle=0x7f040009;
-        public static final int invalidUriParameterMsg=0x7f04000f;
-        public static final int noDueDateError=0x7f040004;
-        public static final int settingsMenuItem=0x7f04000b;
-        public static final int userPreferenceCategory=0x7f04000c;
+        public static final int actionMenuAddTask=0x7f05000e;
+        public static final int addContinueTaskBtn=0x7f050011;
+        public static final int addTaskBtn=0x7f050003;
+        public static final int addTaskLabel=0x7f050002;
+        public static final int alarmServiceLabel=0x7f050007;
+        public static final int alertSoundOnOffPrefSummary=0x7f050016;
+        public static final int alertSoundOnOffPrefTitle=0x7f050017;
+        public static final int alertSoundPrefSummary=0x7f050018;
+        public static final int alertSoundPrefTitle=0x7f050019;
+        public static final int app_name=0x7f050000;
+        public static final int closeButtonDesc=0x7f05000f;
+        public static final int currentTaskHeaderLabel=0x7f050001;
+        public static final int deleteButtonText=0x7f050005;
+        public static final int deleteWarning=0x7f050006;
+        public static final int deleteWarningNoShow=0x7f050008;
+        public static final int deleteWarningNoShowOptionSummary=0x7f05000a;
+        public static final int deleteWarningNoShowOptionTitle=0x7f050009;
+        public static final int displayCompletedPrefSummary=0x7f050012;
+        public static final int displayCompletedPrefTitle=0x7f050013;
+        public static final int invalidUriParameterMsg=0x7f050010;
+        public static final int noDueDateError=0x7f050004;
+        public static final int settingsMenuItem=0x7f05000b;
+        public static final int taskDisplayPrefereceCategory=0x7f05000d;
+        public static final int taskListSizePrefSummary=0x7f050015;
+        public static final int taskListSizePrefTitle=0x7f050014;
+        public static final int userPreferenceCategory=0x7f05000c;
     }
 }

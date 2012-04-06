@@ -6,5 +6,33 @@
             android:key="NoDeleteWarning"
             android:summary="@string/deleteWarningNoShowOptionSummary"
             android:title="@string/deleteWarningNoShowOptionTitle" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="alertSoundOnOff"
+            android:summary="@string/alertSoundOnOffPrefSummary"
+            android:title="@string/alertSoundOnOffPrefTitle"  />
+        <RingtonePreference
+            android:defaultValue="content://settings/system/notification_sound"
+            android:key="alertSound"
+            android:showDefault="true"
+            android:showSilent="false"
+            android:ringtoneType="notification"
+            android:summary="@string/alertSoundPrefSummary"
+            android:title="@string/alertSoundPrefTitle"  />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/taskDisplayPrefereceCategory">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="displayCompleted"
+            android:summary="@string/displayCompletedPrefSummary"
+            android:title="@string/displayCompletedPrefTitle"
+            />
+         <ListPreference
+                        android:title="@string/taskListSizePrefTitle"
+                        android:summary="@string/taskListSizePrefSummary"
+                        android:key="listDisplaySize"
+                        android:defaultValue="10"
+                        android:entries="@array/listSizes"
+                        android:entryValues="@array/listSizes" />
     </PreferenceCategory>
 </PreferenceScreen>

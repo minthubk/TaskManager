@@ -1,8 +1,6 @@
 package com.jeffgabriel.TaskManager;
 
-import java.util.ArrayList;
-
-import com.jeffgabriel.TaskManager.Interfaces.ITaskProvider;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +10,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+
+import com.jeffgabriel.TaskManager.Interfaces.ITaskProvider;
 
 public class CurrentTasksWidget extends LinearLayout {
 	//TODO: this should probably be a data-bound list.
@@ -51,7 +51,7 @@ public class CurrentTasksWidget extends LinearLayout {
 		taskTable = (TableLayout)findViewById(R.id.taskTable);
 		if(taskTable != null){
 			taskTable.removeAllViews();
-			ArrayList<Task> tasks = getProvider(getContext()).getAll();
+			List<Task> tasks = getProvider(getContext()).getAll();
 			for(Task task : tasks){
 				TaskRowWidget row = new TaskRowWidget(this);
 				row.setTaskData(task);
